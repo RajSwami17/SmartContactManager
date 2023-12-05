@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" th:replace="normal/base::Layout(~{::section})" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Profile Page </title>
+</head>
+<body>
+	<section >
+		<div class="card mt-2">
+			<div class="card-body">
+				<div class="container text-center">
+					<h1>User Profile</h1>
+					<hr>
+					<img src="" style="height:175px;width:175px;" th:src="@{'/img/' + ${user.imageUrl}}"
+						alt="Profile_Photo" class="myprofile" />
+					<h2 class="text-center"><span th:text="${user.name}"></span></h2>
+					<table class="table table-bordered	">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<td scope="col"><span th:text="${user.id}"></span></td> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="col">Name</th>
+								<td scope="col"><span th:text="${user.name}"></span></td>
+							</tr>
+							<tr >
+								<th scope="col">Email</th>
+								<td scope="col"><span th:text="${user.email}"></span></td>
+							</tr>
+							<tr >
+								<th scope="col">Role</th>
+								<td scope="col"><span th:text="${user.role}"></span></td>
+							</tr>
+							<tr >
+								<th scope="col">Account Status</th>
+								<td scope="col"><span th:text="${user.enabled}"></span></td>
+							</tr>
+							<tr >
+								<th scope="col">About</th>
+								<td scope="col"><span th:text="${user.about}"></span></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					 
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(()=>{
+				$('.item').removeClass('active');
+				$('#profile-link').addClass('active');
+			})
+		</script>
+	</section>
+</body>
+</html>

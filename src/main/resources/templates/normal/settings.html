@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" th:replace="normal/base::Layout(~{::section})" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Dashboard Page </title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card mt-4">
+						<div class="card-body">
+							<img class="mx-auto d-block" th:src="@{/img/contact.png}" style="height:250px;width:250px;float:center;" alt="Card image cap" />
+							<h1 class="text-center" style="color:red;">Forgot Password..?</h1>
+							<hr> 
+							<form th:action="@{/user/change-password}" method="post">
+								
+								<!-- Old Password -->
+								<div class="form-group mb-2">
+									<h5 class="label label-success">Enter Old Password:</h5>
+									<input name="oldPassword" type="password" class="form-control mt-1" placeholder="Enter Old Password Here"/>
+								</div>
+								<div class="form-group mb-2">
+									<h5 class="label label-success">Enter New Password:</h5>
+									<input name="newPassword" type="password" class="form-control mt-1" placeholder="Enter New Password Here"/>
+								</div>
+								
+								<div class="container text-center mb-2">
+									<button type="submit" class="btn btn-outline-primary">Submit</button>
+									<button type="reset" class="btn btn-outline-warning">Reset</button>
+								</div>
+								 
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(() => {
+				$('.item').removeClass('active');
+				$('#settings-link').addClass('active');
+			})
+		</script>
+	</section>
+</body>
+
+</html>

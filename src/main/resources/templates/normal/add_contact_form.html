@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" th:replace="normal/base::Layout(~{::section})" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+
+	<title>Add Contact Page </title>
+</head>
+
+<body>
+	<section>
+
+		<div class="card mt-2">
+
+			<div class="card-body">
+
+				<h2 class="text-center"> Add Contact </h2>
+
+				<div class="container-fluid mt-1">
+
+					<div class="row">
+
+						<div class="col-md-10 offset-md-1">
+
+							<form class="mt-1" action="" th:action="@{/user/save-contact}" method="post"
+								th:object="${contact}" enctype="multipart/form-data">
+
+								<!-- First Name -->
+								<div class="input-group mb-1">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><span class="material-symbols-outlined">
+												add
+											</span>
+										</div>
+									</div>
+									<input required type="text" class="form-control" id="firstName"
+										placeholder="Enter First Name Here" name="firstName">
+								</div>
+
+
+								<!-- Last Name -->
+								<div class="input-group mb-1">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><span class="material-symbols-outlined">
+												person
+											</span></div>
+									</div>
+									<input required type="text" class="form-control" id="lastName"
+										placeholder="Enter Last Name Here" name="lastName">
+								</div>
+
+								<!-- Phone Field -->
+								<div class="input-group mb-1">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><span class="material-symbols-outlined">
+												call
+											</span></div>
+									</div>
+									<input required min="10" type="number" class="form-control" id="phone"
+										placeholder="Enter Phone Number Here" name="phone">
+								</div>
+
+								<!-- Email Field -->
+								<div class="input-group mb-1">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><span class="material-symbols-outlined">
+												mail
+											</span></div>
+									</div>
+									<input required type="email" class="form-control" id="email"
+										placeholder="Enter Email Address Here" name="email">
+								</div>
+
+								<!-- Work Field -->
+								<div class="input-group mb-1">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><span class="material-symbols-outlined">
+												work
+											</span></div>
+									</div>
+									<input required type="text" class="form-control" id="work"
+										placeholder="Enter About Your Work Here" name="work">
+								</div>
+
+								<!-- Description Field -->
+								<div class="form-group mb-1">
+									<textarea id="mytextarea" name="description" cols="10" rows="9"
+										class="form-control" placeholder="Enter Contact Description"></textarea>
+								</div>
+
+								<!-- Contact Image -->
+								<div class="custom-file mb-1">
+									<input type="file" class="form-control" name="profileImage" />
+								</div>
+
+								<!--buttons-->
+								<div class="container text-center">
+									<button class="btn btn-outline-primary" type="submit">Save Contact</button>
+									<button type="reset" class="btn btn-outline-warning">Reset</button>
+								</div>
+
+							</form>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+		<script>
+			$(document).ready(()=>{
+				$('.item').removeClass('active');
+				$('#addcontact-link').addClass('active');
+			})
+		</script>
+	</section>
+</body>
+
+</html>

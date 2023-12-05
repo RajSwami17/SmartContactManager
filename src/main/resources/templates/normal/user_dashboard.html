@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" th:replace="normal/base::Layout(~{::section})" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Dashboard Page </title>
+</head>
+
+<body>
+	<section>
+		<div class="homeprofile container mt-2 d-flex justify-content-center align-items-center">
+			<div class="text-center">
+				<h1 class="text-white">Start Adding Your Contacts On Cloud..! </h1>
+				<h3 class="text-white ">With our Smart Contact Manager</h3>
+				<!--<button  type="button" class="btn bg-primary mt-4 btn-block"><a id="contact" href="#" th:href="@{/user/add-contact}">Add New Contact</a></button>-->
+				<button class="btn bg-primary mt-4 btn-lg btn-block"><a id="contact" href="#" th:href="@{/user/add-contact}">Add New Contact</a></button>
+			</div>
+		</div>
+		<script>
+			$(document).ready(()=>{
+				$('.item').removeClass('active');
+				$('#home-link').addClass('active');
+			})
+		</script>
+	</section>
+</body>
+
+</html>

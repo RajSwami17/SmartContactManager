@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" th:replace="base::Layout(~{::section})">
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Home Page </title>
+	</head>
+	<body>
+		<section class="banner">
+			<div class="banner-msg text-center">
+				<h1 class="font-weight-bold"> Smart Contact Manager </h1>
+			<p>
+				Start Collecting Your Contacts In Very Smarter Way. We Provide 
+				Very Efficient And Smarter Way of Handling Contacts.	
+			</p>
+				<button class="btn bg-primary mt-4 btn-lg btn-block"><a id="contact" href="#" th:href="@{/signin}">Get's Start..!</a></button>
+			</div>
+		</section>
+	</body>
+</html>

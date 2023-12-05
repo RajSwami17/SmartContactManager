@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<title th:text="${title}">Common Page</title>
+</head>
+
+<body>
+
+	<!--Start-Navbar-->
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+		<div class="container-fluid text-uppercase">
+			<a class="navbar-brand" href="#">Smart Contact Manager</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+					<li class="nav-item">
+						<a class="nav-link active" th:href="@{/user/index}" href="#">Home</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" href="#"><span th:text="${user.name}"></span></a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" th:href="@{/user/settings}" href="#">Change Password</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" th:href="@{/logout}" href="#">Logout</a>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<!--End-Navbar-->
+
+	<!--Side-Bar-->
+	<div class="sidebar mt-4">
+		<span onclick="tooggleSidebar()" class="crossbtn">&times;</span>
+		<a id="home-link" href="#" th:href="@{/user/index}" class="item"><i class="fa fa-home" style="color: #1f787a;"></i>&nbsp;Home</a>
+		<a id="viewcontact-link" href="#" th:href="@{/user/view-contacts/0}" class="item"><i class="fa fa-id-card-alt "
+				style="color: #1f787a;"></i>&nbsp;View Contacts</a>
+		<a id="addcontact-link" href="#" th:href="@{/user/add-contact}" class="item"><i class="fa fa-pencil-alt"
+				style="color: #1f787a;"></i>&nbsp;Add Contact</a>
+		<a id="profile-link" href="#" th:href="@{/user/profile}" class="item"><i class="fa fa-user-circle" style="color: #1f787a;"></i>&nbsp;Your Profile</a>
+		<a id="settings-link" href="#" th:href="@{/user/settings}" class="item"><i class="fa fa-cogs" style="color: #1f787a;"></i>&nbsp;Settings</a>
+		<a id="logout-link" href="#" th:href="@{/logout}" class="item"><i class="fa fa-sign-out-alt"
+				style="color: #1f787a;"></i>&nbsp;Logout</a>
+		<!--<div class="divider"></div>-->
+	</div>
+	<!--End Side-Bar-->
+	<!--Contet Area-->
+	<div class="content mt-4">
+		<i onclick="tooggleSidebar()" class="fas fa-bars mb-2" style="color: #1f787a;"></i>
+		<!-- Message Box -->
+		<div th:if="${session.message}" class="container mb-2">
+			<div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+				<span th:text="${session.message.content}"></span>
+			</div>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div th:replace="${content}"> </div>
+	</div>
+	<!--End Content Area-->
+	<!-- Optional JavaScript; choose one of the two! -->
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- Option 2: Separate Popper and Bootstrap JS -->
+	<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  
+	<script th:src="@{/js/script.js}"></script>
+
+</body>
+
+</html>

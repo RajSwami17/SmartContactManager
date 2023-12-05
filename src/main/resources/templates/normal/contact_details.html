@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" th:replace="normal/base::Layout(~{::section})" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Details Page </title>
+</head>
+
+<body>
+	<section>
+		<div class="card mt-2">
+			<div class="card-body" th:if="${contact}">
+				<div class="container text-center">
+					<h2>Contact Profile</h2>
+					<hr>
+					<img src="" style="height:200px;width:200px;" th:src="@{'/img/' + ${contact.image}}"
+						alt="Profile_Photo" class="myprofile" />
+					<h3 class="mt-2"><span th:text="${contact.firstName}"></span>&nbsp;<span
+							th:text="${contact.lastName}"></span></h3>
+					<table class="table table-bordered">
+						<thead>
+							<tr class="table-danger">
+								<th scope="col">Id</th>
+								<th scope="col">SCM(2023)-<span th:text="${contact.cid}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row">Email</td>
+								<td><span th:text="${contact.email}"></span></td>	
+							</tr>
+							<tr>
+								<td scope="row">Phone</td>
+								<td><span th:text="${contact.phone}"></span></td>
+							</tr>
+							<tr>
+								<td scope="row">Work</td>
+								<td><span th:text="${contact.work}"></span></td>
+							</tr>
+							<tr>
+								<td scope="row">Description</td>
+								<td><span th:utext="${contact.description}"></span></td>
+							</tr>
+							
+						</tbody>
+					</table>	
+				</div>
+			</div>
+			
+				<h1 th:unless="${contact}" class="text-center p-5"> Your Dont have a permission to see this contact..!</h1>	
+
+		</div>
+		
+	</section>
+</body>
+
+</html>
